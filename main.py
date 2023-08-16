@@ -5,8 +5,6 @@ import requests
 r = requests.get('https://www.cursbnr.ro/')
 class GetRates:
     def get_rates():
-        global currency
-        global value
         if r.ok:
             soup = BeautifulSoup(r.content, 'lxml')
             currency_table = soup.find('div', class_='table-responsive')
@@ -19,7 +17,4 @@ class GetRates:
                     value.append(values[2].text)
 
             data = dict(zip  (currency, value))
-            currency = data.keys()
-            value = data.values()   
-
-            
+           
